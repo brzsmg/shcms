@@ -1,0 +1,17 @@
+#########################################
+#  Конфигурация Apache                  # 
+#########################################
+<Files ".*">
+  Order Allow,Deny
+  Deny from All
+</Files>
+
+###FileSystems
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset Off
+#ErrorDocument 400 "error400
+
+<FilesMatch ".(php)$">
+  Header unset Cache-Control
+</FilesMatch>

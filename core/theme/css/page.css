@@ -1,0 +1,144 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-size: 14px;
+}
+
+html, body {
+	height: 100%;
+}
+
+#page-wrapper {
+    min-height: 100%;
+	min-width: 300px;
+	max-width: 700px;
+    margin: 0px auto -50px auto;
+	background-color: #FFFFFF;
+}
+
+* html #page-wrapper {
+    height: 100%;
+}
+
+#page-buffer {
+    height: 50px;
+	/*background-color: #DDDDDD;*/
+}
+
+#page-footer {
+	background-color: #DDDDDD;
+	margin: 0px auto 0px auto;
+	min-width: 300px;
+	max-width: 700px;
+	height: 50px;
+}
+
+#page-content {
+	padding: 10px;
+	overflow: hidden;
+}
+
+#page-header {
+	overflow: hidden;
+	height: 30px;
+	min-width: 300px;
+	max-width: 700px;
+	border-radius: 10px 10px 0 0;
+	border: 1px solid black;
+	background-color: #EEEEFF; 
+	border-width: 0px 0px 1px 0px;
+}
+
+#header {
+	padding: 5px;
+}
+
+#footer {
+	padding: 10px;
+}
+
+#modal_popup_background {
+	overflow: hidden;
+	background-color: rgba(0,0,0,.5);
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	display: none;
+	width:100%;
+	height:100%;
+}
+#modal_popup_box {
+	cursor: default;
+	height: 350px;
+	width: 400px;
+	background-color: #EEEEEE;
+	border: 1px solid #AAAAAA;
+	border-radius: 6px;
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.4);
+}
+
+#modal_popup_box {
+	padding: 10px;
+}
+/**/
+
+body {
+	background: url('/core/theme/img/bg.gif'); 
+}
+
+.table     { display: table }
+.tr        { display: table-row }
+.thead     { display: table-header-group }
+.tbody     { display: table-row-group }
+.tfoot     { display: table-footer-group }
+.col       { display: table-column }
+.colgroup  { display: table-column-group }
+.td, .th   { display: table-cell }
+.caption   { display: table-caption }
+
+
+#page-layout {
+    min-height: 100%;
+	min-width: 300px;
+	max-width: 700px;
+	/*margin: 0px auto;*/
+	margin: 0px auto -32px auto;
+	background-color: #FFFFFF;
+	border-radius: 6px;
+	border: 1px solid black;
+	border-width: 0px 1px 0px 1px;
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.9);
+}
+
+.button {
+	color: #000000;
+	display: inline-block;
+	background-color: #EEEEFF;
+	text-decoration: none;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.button:hover {
+	color: #000000;
+	background-color: #FFFF88;
+}
+
+.form-check-error {
+	border: 1px solid red;
+}
+
+.frame-s64 {
+	display: block;
+	width: 64px;
+	height: 64px;
+}
+
+.avatar {
+
+	margin: 10px;
+}
+
+.left {
+	float: left;
+}

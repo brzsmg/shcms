@@ -1,0 +1,1 @@
+SmartyBC разрешает теги {php} и {php_include}

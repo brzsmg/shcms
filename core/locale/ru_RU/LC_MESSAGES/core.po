@@ -1,0 +1,200 @@
+# ******************************************************************************
+#    type: T.PO                                     © 2014 Selivanovskikh M.G. *
+# charset: UTF-8                                                               *
+#    path: RU                                                                  *
+# ******************************************************************************
+msgid ""
+msgstr ""
+"Project-Id-Version: shcms\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: Selivanovskikh MG <javof@ya.ru>\n"
+"Language: ru\n"
+"X-Generator: Poedit 1.6.5\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+msgid "Forms"
+msgstr "Формы"
+
+msgid "1 hour"
+msgid_plural "%n hours"
+msgstr[0] "%n час"
+msgstr[1] "%n часа"
+msgstr[2] "%n часов"
+
+msgid "1 second"
+msgid_plural "%n seconds"
+msgstr[0] "%n секунда"
+msgstr[1] "%n секунды"
+msgstr[2] "%n секунд"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Page not found or is not available."
+msgstr "Страница не найдена или недоступна."
+
+msgid "Page \"%s\" not found or is not available."
+msgstr "Страница \"%s\" не найдена или недоступна."
+
+msgid "Section no found."
+msgstr "Раздел не существует."
+
+msgid "No access to the section."
+msgstr "Нет доступа к разделу."
+
+msgid "Division by zero"
+msgstr "Деление на ноль"
+
+################
+# Bootstrap
+################
+msgid "System"
+msgstr "Система"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "By"
+msgstr "Автор"
+
+msgid "E-mail"
+msgstr "Эл-почта"
+
+msgid "ERROR"
+msgstr "Ошибка"
+
+msgid "DEBUG"   
+msgstr "Отладка"
+
+msgid "An error has occurred, the details can be seen in debug mode."   
+msgstr "Произошла ошибка, подробности можно увидеть в режиме отладки."
+
+msgid "Message Info."   
+msgstr "Информационное сообщение."
+
+msgid "Information"   
+msgstr "Информация"
+  
+msgid "This message is displayed in debug mode. When you publish a site, you disable this option for security."   
+msgstr "Это сообщение выводится в режиме отладки. Если вы хотите опубликовать сайт, необходимо отключить отладку для безопасности."
+
+msgid "Severity" 
+msgstr "Серьезность"
+
+msgid "Trace"
+msgstr "Стек вызовов"
+
+msgid "Error on line"   
+msgstr "Ошибка на линии"
+
+msgid "Error in file"   
+msgstr "Ошибка в файле"
+
+msgid "Context"   
+msgstr "Контекст"
+
+msgid "Class"   
+msgstr "Класс"
+
+msgid "Exception"   
+msgstr "Исключение"
+
+msgid "Parent class"   
+msgstr "Родительский класс"
+
+msgid "Hide details of the problem"   
+msgstr "Скрыть детали проблеммы"
+
+msgid "Show details of the problem"   
+msgstr "Показать детали проблеммы"
+
+#'ERROR_CLASS_NO_FOUND'     =>       'Class "%1$s" no found. File "%2$s".',
+#'ERROR_FUNCTION_NOT_DEFINED'  =>    'Function "<u>%1$s()</u>" is not defined.',
+#'ERROR_VARIABLE_NOT_DEFINED'  =>    'Variable "<u>$%1$s</u>" is not defined.',
+#'ERROR_PHP_VERSION'           =>    'Version "<i>%1$s</i>" PHP are not supported.',
+#'ERROR_METHOD_NOT_DEFINED'    =>    'Invoke a method of "<u>%1$s()</u>" is not defined.',
+#'ERROR_PROPERTY_NOT_DEFINED'  =>    'Required property "<u>%1$s</u>" is not defined.',
+#'ERROR_INI_NO_FOUND'          =>    'Configuration file "<u>%1$s</u>" not found.',
+#'ERROR_FILE_NO_FOUND'         =>    'File "<u>%1$s</u>" not found.',
+#'ERROR_DIR_NO_FOUND'          =>    'Dir "<u>%1$s</u>" not found.',
+
+msgid "Memory use"   
+msgstr "Использовано памяти"
+
+msgid "Usage time"   
+msgstr "Затрачено времени"
+
+msgid "%1$s byte"   
+msgstr "%1$s байт"
+
+msgid "%1$s KB"   
+msgstr "%1$s КБ"
+
+msgid "%1$s MB"   
+msgstr "%1$s МБ"
+
+msgid "%1$s GB"   
+msgstr "%1$s ГБ"
+
+################
+#  INSTALL
+################
+msgid "Install CMS"
+msgstr "Установка системы управления сайтом"
+
+msgid "Installation stages"
+msgstr "Этапы установки"
+
+msgid "Checking password"
+msgstr "Проверка пароля"
+
+msgid "Configuring the database"
+msgstr "Настройка базы данных"
+
+msgid "Creating Tables"
+msgstr "Создание таблиц"
+
+msgid "Completion"
+msgstr "Завершение"
+
+msgid "You have entered a wrong password"
+msgstr "Вы ввели неверный пароль"
+
+msgid "To continue the installation, you must enter the password. Set the password in the file %s. This file can be opened only user with access to the file system site."
+msgstr "Для продолжения установки необходимо ввести пароль. Пароль указан в файле %s. Этот файл сможет открыть только пользователь с доступом к файловой системе сайта."
+
+msgid "Password to access the installation"
+msgstr "Пароль для доступа к установке"
+
+msgid "Continue"
+msgstr "Продолжить"
+
+msgid "Enter the settings for connecting to the database"
+msgstr "Введите параметры подключения к базе данных"
+
+msgid "Type DB"
+msgstr "Тип БД"
+
+msgid "Name of database"
+msgstr "Имя базы данных"
+
+msgid "Username database"
+msgstr "Имя пользователя БД"
+
+msgid "Password for database"
+msgstr "Пароль к БД"
+
+msgid "Host"
+msgstr "Хост"
+
+msgid "Port number"
+msgstr "Номер порта"
+
+msgid "Table prefix"
+msgstr "Префикс таблиц"
