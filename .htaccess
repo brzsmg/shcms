@@ -1,0 +1,40 @@
+################################################################################
+#    type: CFG.HTTPD                           © 2011-2015 Selivanovskikh M.G. #
+# charset: UTF-8                                                               #
+# created: 2011.01.01                                                          #
+#    path: .htaccess                                                           #
+################################################################################
+<Files ".*">
+  Order Allow,Deny
+  Deny from All
+</Files>
+
+###FileSystems
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset Off
+#ErrorDocument 400 "error400
+
+###Rewrite
+RewriteEngine On
+RewriteBase /
+
+rewriteCond %{REQUEST_URI} !^/favicon.ico
+rewriteCond %{REQUEST_URI} !^/trex/
+rewriteCond %{REQUEST_URI} !^/dev/
+rewriteCond %{REQUEST_URI} !^/core/theme/
+rewriteCond %{REQUEST_URI} !^/modules/
+rewriteCond %{REQUEST_URI} !^/phpPgAdmin/
+rewriteCond %{REQUEST_URI} !^/index.php
+rewriteCond %{REQUEST_URI} !^/cache/img
+rewriteCond %{REQUEST_URI} !^/files
+RewriteRule ^(.*)(/?(.*))+$ /index.php [L,QSA]
+
+#Для получения POST raw data от multipart/form-data
+<IfModule mod_setenvif>
+	SetEnvIf Content-Type ^(multipart/form-data)(.*) MULTIPART_CTYPE=$1$2
+	<IfModule mod_headers>
+		RequestHeader set Content-Type application/x-httpd-php env=MULTIPART_CTYPE
+		RequestHeader set X-Real-Content-Type %{MULTIPART_CTYPE}e env=MULTIPART_CTYPE
+	</IfModule>
+</IfModule>

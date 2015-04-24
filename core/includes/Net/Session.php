@@ -47,8 +47,12 @@ class Session extends \System\Object
 			while(($row = $result->fetchArray())!==False) {
 				$this->Data[$row[0]]=$row[1];
 			}
-			
-			if(!array_key_exists('device_type',$this->Data)) {
+			if(
+				(!array_key_exists('device_type',$this->Data))
+				or($this->agent_hash !== md5($this->WebClient->getAgent()))
+			)
+			{
+				$this->agent_hash = md5($this->WebClient->getAgent());
 				$this->device_type = $this->WebClient->getBrowser()->Device_Type;
 			}
 		}
@@ -80,7 +84,7 @@ class Session extends \System\Object
 		$auth_date = $date + $Year;//TODO:getConfig
 		if($sid === FALSE) {
 			//Идентификатора нет, создаем Новый идентификатор сессии 
-			$NewSID=addslashes(md5(rand(1000,9999).mtime().rand(1000,9999)));
+			$NewSID = addslashes(md5(rand(1000,9999).mtime().rand(1000,9999)));
 			$query = 'INSERT INTO {sessions} VALUES (:create_date, :update_date, :sid, :uid, :cookie_date, :auth_date);';
 			$result = $this->Base->query($query,
 				array(

@@ -57,7 +57,7 @@ class Page extends \Net\Response
 		
 		$this->Theme = $inTheme;
                 
-		$this->cachedir = ROOT.DS.'cache'.DS.'templates';//TODO: из конфига
+		$this->cachedir = CACHE.DS.'templates';//TODO: из конфига
 		
 		$this->assign('config', $this->Request->getSystem()->getConfig());
 		$this->assign('statistic', new \Cms\Statistic($this->Request));

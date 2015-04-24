@@ -122,7 +122,14 @@ class System extends \System\Dispatch
 			return FALSE;
 		}
 		while (($entry = readdir($handle)) !== FALSE) {
-			if((!is_dir(MODULES.DS.$entry))or($entry == '.')or($entry == '..')) {
+			if(
+				(!is_dir(MODULES.DS.$entry))
+				or ($entry == '.')
+				or ($entry == '..')
+				or (substr($entry,0,1) == '_')
+			)
+			{
+				
 				continue;
 			}
 			$this->Module[$entry] = array();

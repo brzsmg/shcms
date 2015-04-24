@@ -30,9 +30,8 @@ class Browser extends \System\Object
 	
 	private function init()
 	{
-		if($this->Data === NULL)
-		{
-			$this->Browscap = new \Net\Browscap('cache');
+		if($this->Data === NULL) {
+			$this->Browscap = new \Net\Browscap(CACHE);
 			$this->Browscap->localFile = 'data/full_php_browscap.ini';
 			$this->Data = $this->Browscap->getBrowser($this->Agent);
 		}
