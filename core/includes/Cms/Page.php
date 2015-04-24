@@ -72,11 +72,11 @@ class Page extends \Net\Response
 		call_user_func_array('parent::destruct', array());
 	}
 	
-	protected function fetch($path)
+	protected function fetch($path,$module = NULL)
 	{
 		$data = new \Smarty_Data;
 		$data->assign($this->Data);
-		$tplpath = $this->Theme->GetPath('tpl'.DS.$path.'.tpl');
+		$tplpath = $this->Theme->GetPath('tpl'.DS.$path.'.tpl',$module);
 		$tpl = $this->smarty->createTemplate($tplpath,$data);
 		error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 		$result = $tpl->fetch();
@@ -98,11 +98,15 @@ class Page extends \Net\Response
 		$this->smarty->registerPlugin('function','theme', array($this,'tpl_theme'));
 		$this->smarty->registerPlugin('function','link', array($this,'tpl_link'));
 		$this->smarty->registerPlugin('function','send', array($this,'tpl_send'));
+		$this->smarty->registerPlugin('function','thumb', array($this,'tpl_thumb'));
+		$this->smarty->registerPlugin('modifier','plural', array($this,'tpl_plural'));
+
 		
 		//$view = $this->getView($this->ViewName);
 		$this->assign($this->View->getData());
 		$this->Blocks['content'] = $this->fetch($this->View->getTemplatePath());
 		$html = NULL;
+		
 		if($inTpl != NULL ) {
 			$this->assign('block', $this->Blocks);
 			$html = $this->fetch($inTpl);
@@ -110,17 +114,63 @@ class Page extends \Net\Response
 			$html = $this->Blocks['content'];
 		}
 		if($inFormat == 'json') {
-			$this->Body = '{'."\r\n\t".'"body": ';
+			$result = array(
+				'state' => 'success',
+				'body' => $html,
+				'debug_log' => $this->Data['debug']['log']
+			);
+			$this->Body = $this->_json_encode($result);
+			/*$this->Body = '{'."\r\n\t".'"body": ';
 			$this->Body .= json_encode($html);
 			$this->Body .= ','."\r\n\t".'"debug_log": ';
 			$this->Body .= json_encode($this->Data['debug']['log']);
 			$this->Body .= "\r\n".'}';
+			print_r($this->Body);exit;*/
 		} else {
 			$this->Body = $html;
 
 		}
 	}
-
+	/**
+	 * devilan@o2.pl
+	 * @param type $arr
+	 * @return type
+	 */
+	public function _json_encode($arr)
+	{
+			//convmap since 0x80 char codes so it takes all multibyte codes (above ASCII 127). So such characters are being "hidden" from normal json_encoding
+			/*array_walk_recursive($arr, function (&$item, $key) { if (is_string($item)) $item = mb_encode_numericentity($item, array (0x80, 0xffff, 0, 0xffff), 'UTF-8'); });
+			return mb_decode_numericentity(json_encode($arr), array (0x80, 0xffff, 0, 0xffff), 'UTF-8');*/
+			return json_encode($arr);
+	}
+	
+//
+	public function tpl_thumb($params) {
+		if(array_key_exists('size',$params)) {
+			$s = explode('x',$params['size']);
+			if($s>1) {
+				$params['width']  = $s[0];
+				$params['height'] = $s[1];
+			}
+		}
+		$thumb = new \Cms\Thumb($this->System, $params);
+		return $thumb->getPath();
+	}
+	
+	public function tpl_plural($n,$n0='иев',$n1='ий',$n2='ия')
+	{
+		if((4 < $n) && ($n < 21)){
+			return $n0;
+		}
+		$n = $n % 10;
+		if ($n==1) {
+			return $n1;
+		} elseif(($n > 4) ||($n==0)) {
+			return $n0;
+		} else {
+			return $n2;
+		}
+	}
 	/**
 	 * Функция делает ссылку, либо вызов функции JS в зависимости
 	 * от типа устройства пользователя.
@@ -174,10 +224,10 @@ class Page extends \Net\Response
 			{
 				$params['data'] = NULL;
 			}
-			$this->Views[] = $params['name'];
+			//$this->Views[] = $params['name'];//TODO нужно вернуть
 			$view = \Cms\View::create($this->Request, $params['name'], $params['data']);
 			$this->assign($view->getData());
-			return $this->fetch($view->getTemplatePath());
+			return $this->fetch($view->getTemplatePath(),$view->getModuleName());
 		} else {
 			throw new \System\ECore('Название представления не указано.');
 		}

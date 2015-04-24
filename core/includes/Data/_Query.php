@@ -1,14 +1,16 @@
-<?php /************************************************************************
-*                                              © 2013-2014 Selivanovskikh M.G. *
+<?php /*************************************************************************
+*    type: SRC.PHP5                                 © 2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
-*  S.PHP5: \Data\Query                                                         * 
-*                                                                              *
-*   Запрос к БД. Эксперементальный класс.                                      *
+* created: 2014.10.01                                                          *
+*    path: \Data\Query                                                         * 
 *******************************************************************************/
 namespace Data;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
-/**/
+
+/**
+ * Запрос к БД. Эксперементальный класс
+ */
 class Query
 {
     public $driver;
@@ -16,5 +18,3 @@ class Query
     public function rows();
     public function count();
 }
-
-?>

@@ -1,5 +1,5 @@
 <?php /*************************************************************************
-*  S.PHP5:                                         © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Data\Provider\SQLite                                               * 
@@ -8,7 +8,7 @@
 *******************************************************************************/
 namespace Data\Provider;
 echo 'Файл '._FILE_.'требует коректировки';exit;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
 class SQLite extends \Data\Base {
@@ -212,5 +212,3 @@ class SQLite extends \Data\Base {
 		}
     }
 }
-
-?>

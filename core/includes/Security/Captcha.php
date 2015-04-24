@@ -1,9 +1,9 @@
 <?php /*************************************************************************
-*  S.PHP5:                                          © 2006-2011 Kruglov Sergei *
+*    type: SRC.PHP5                                 © 2006-2011 Kruglov Sergei *
 * charset: UTF-8                                                               *
+* created: 2013.02.01                                                          *
 *    path: \Security\Captcha.php                                               *
 *  source: www.captcha.ru, www.kruglov.ru                                      *
-*                                                                              *
 *******************************************************************************/
 namespace Security;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}

@@ -1,5 +1,5 @@
 <?php /*************************************************************************
-*  M.PHP5:                                     © 2009-2014 Selivanovskikh M.G. *
+*    type: SRC.PHP5                            © 2009-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2009.02.01                                                          *
 *    path: \Net\Session                                                        * 

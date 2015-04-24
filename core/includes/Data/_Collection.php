@@ -1,13 +1,16 @@
-<?php /************************************************************************
-*                                              © 2009-2014 Selivanovskikh M.G. *
+<?php /*************************************************************************
+*    type: SRC.PHP5                                 © 2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
-*  S.PHP5: \Data\Collection                                                    * 
-*                                                                              *
-*   Коллекция.                                                                 *
+* created: 2014.10.01                                                          *
+*    path: \Data\Collection                                                    * 
 *******************************************************************************/
 namespace Data;
 if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Коллекция. Эксперементальный класс
+ */
 abstract class Collection extends \System\Object{
   //# Свойства #//
   protected /*String*/ $_items = false;
@@ -31,4 +34,3 @@ abstract class Collection extends \System\Object{
   }
   
 }
-/***************************************************************************/ ?>

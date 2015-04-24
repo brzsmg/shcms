@@ -46,6 +46,7 @@ class System extends \System\Dispatch
 			$this->loadConfiguration();
 			$this->Controllers[''] = 'Sections';
 			$this->addController('captcha', 'Captcha');
+			$this->addController('upload', 'Upload');
 		}
 		\sem_release($sem);
 	}

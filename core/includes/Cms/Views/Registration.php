@@ -1,5 +1,5 @@
 <?php /*************************************************************************
-*    type: SRC.PHP5                                © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Cms\Views\Registration                                             * 
@@ -85,12 +85,15 @@ class Registration extends \Cms\View
 						'close_date'  => 0,
 						'create_date' => $time,
 						'update_date' => $time,
-						'create_user' => '1000',
-						'update_user' => '1000',
+						'create_user' => '2000',
+						'update_user' => '2000',
 						'reason'      => 'Registration new user.'
 					), 'id');
 					$id = $this->Base->getInsertID();
 					foreach($data as $key => $value) {
+						if($key == 'password') {
+							$value = md5($value);
+						}
 						$query = 'INSERT INTO {users_data} ("id", "key", "value") VALUES (:id, :key, :value)';
 						$result = $this->Base->query($query, array(
 							'id'    => $id,

@@ -1,5 +1,5 @@
 <?php /*************************************************************************
-*    type: SRC.PHP5                                © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Cms\Views\User                                                     * 
@@ -9,7 +9,7 @@ if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
 /**
- * Представление для Статей.
+ * Представление для Пользователя.
  */
 class User extends \Cms\View
 {

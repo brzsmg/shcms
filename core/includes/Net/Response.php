@@ -5,8 +5,12 @@
 *    path: \Net\Response                                                       * 
 *******************************************************************************/
 namespace Net;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Результат запроса, для клиента
+ */
 class Response extends \System\Object{
 //# Свойства #//
 	protected /*Array*/  $Headers    = array();

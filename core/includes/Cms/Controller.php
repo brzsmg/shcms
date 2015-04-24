@@ -2,7 +2,7 @@
 *    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
-*    path: \Cms\Controller                                                       * 
+*    path: \Cms\Controller                                                     * 
 *******************************************************************************/
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}

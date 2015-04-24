@@ -1,12 +1,13 @@
 <?php /*************************************************************************
-*  H.PHP5:                                     © 2011-2014 Selivanovskikh M.G. *
+*    type: SRC.PHP5                            © 2011-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
+* created: 2011.09.01                                                          *
 *    path: \System\Exception                                                   *
 *                                                                              *
 *    Исключения. Сдесь представлены нативные классы Exception и ErrorException.*
 *  Их не нужно подключать к проекту.                                           *
 *******************************************************************************/
-Header("Location: http://".getenv('HTTP_HOST'));exit;
+header("Location: http://".getenv('HTTP_HOST'));exit;
 /******************************************************************************/
 class Exception {              
 /* Свойства */

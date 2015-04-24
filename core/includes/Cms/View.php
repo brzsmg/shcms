@@ -16,6 +16,7 @@ if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 class View extends \System\Dispatch
 {
 	protected $System = FALSE;
+	protected $ModuleName = 'Core';
 	protected $Links = array();
 	protected $Block = NULL;
 	protected $Data = array();
@@ -48,6 +49,14 @@ class View extends \System\Dispatch
 	{
 		$name = substr(get_called_class(),strlen('\\Cms\\Views'));
 		return path($name);
+	}
+	
+	/**
+	 * Возвращает имя модуля вьюхи
+	 */
+	public function getModuleName()
+	{
+		return $this->ModuleName;
 	}
 	
 	/**

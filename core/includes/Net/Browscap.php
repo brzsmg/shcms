@@ -1,6 +1,6 @@
 <?php
 
-namespace Net;
+namespace Net; //Added: [2014.10.01] Selivanovskikh MG
 
 use \Exception as BaseException;
 

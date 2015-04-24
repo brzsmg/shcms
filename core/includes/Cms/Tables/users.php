@@ -52,8 +52,8 @@ $tables[] = array(
 			'close_date'   => 0,
 			'create_date'  => 1418128299,
 			'update_date'  => 1418128299,
-			'create_user'  => 3000,
-			'update_user'  => 3000,
+			'create_user'  => 2000,
+			'update_user'  => 2000,
 			'reason'       => 'Зарегистрирован новый пользователь'
 		)
 		

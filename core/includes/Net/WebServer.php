@@ -1,13 +1,16 @@
-<?php /************************************************************************
-*  M.PHP5:                                     © 2010-2013 Selivanovskikh M.G. *
+<?php /*************************************************************************
+*    type: SRC.PHP5                            © 2010-2013 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
+* created: 2010.10.01                                                          *
 *    path: \Net\WebServer                                                      * 
-*                                                                              * 
-*   Web сервер.                                                                *
 *******************************************************************************/
 namespace Net;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Web сервер.
+ */
 class WebServer extends \System\Dispatch{
 //# События #//
 	public $EvtClient;

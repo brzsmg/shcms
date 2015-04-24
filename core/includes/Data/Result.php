@@ -1,15 +1,16 @@
 <?php /*************************************************************************
-*  S.PHP5:                                         © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                            © 2013-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Data\Result                                                        * 
-*                                                                              *
-*   Результат запроса.                                                         *
 *******************************************************************************/
 namespace Data;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
+/**
+ * Результат запроса
+ */
 class Result extends \System\Object{
 	protected $FProvider;
     protected $FResult;

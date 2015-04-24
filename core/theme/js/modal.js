@@ -1,6 +1,8 @@
 if (typeof modal_popup_update != 'function') {
 	var modal_popup_showing = false;
 	var subhistory_count = 0;
+	var pages = { main: function(){ modal_popup_hide(); } };
+	var main = false;
 	var modal_popup_update = function()
 	{
 		//$('#modal_popup_box').css('width',500);
@@ -13,29 +15,29 @@ if (typeof modal_popup_update != 'function') {
 		var newtop = (viewport_h - mb_h) / 2;
 		$('#modal_popup_box').css('margin-left',newleft);
 		$('#modal_popup_box').css('margin-top',newtop);
-	}
+	};
 	var modal_popup_show = function()
 	{
 		$('#modal_popup_background').css('display','block');
 		modal_popup_showing = true;
-	}
+	};
 	var modal_popup_hide = function()
 	{
 		$('#modal_popup_background').css('display','none');
 		modal_popup_showing = false;
-	}
+	};
 	var modal_popup_open = function()
 	{
 		history.pushState( { link: 'debug' } , 'Debug', '?debug');
 		subhistory_count++;
 		modal_popup_show();
-	}
+	};
 	var modal_popup_close = function()
 	{
 		modal_popup_hide();
 		window.history.go(-1);
 		subhistory_count--;
-	}
+	};
 	$(function(){
 		if($('#modal_popup_background').length == 0) {
 			var css = '<style type="text/css">';
@@ -62,9 +64,17 @@ if (typeof modal_popup_update != 'function') {
 		//[Esc]
 		if((event.keyCode == 27)&&(modal_popup_showing)) {
 			if(subhistory_count != 0) {
+				if(main != true) {
+					history.pushState( { link: '/' } , '/', '/');
+					//Открываем главное окно
+				}else {
+					window.history.go(-subhistory_count);
+					//Закрываем все окна
+				}
 				modal_popup_hide();
-				window.history.go(-subhistory_count);
 				subhistory_count = 0;
+			} else {
+
 			}
 		}
 	});
@@ -119,19 +129,24 @@ function send(id_form, ispopup) {
 	} else {
 		$('#'+id_form).submit();
 	}
-	
 }
 
-var pages = { main: function(){ modal_popup_hide(); } };
-
 $(function() {
-	history.replaceState( { link: 'main' }, 'Main');
+	if(window.location.pathname == '/') {
+		main = true;
+		history.replaceState( { link: 'main' }, 'Main');
+	} else {
+	
+	}
+	
 	window.addEventListener('popstate', function(e) {
 		var event = event || e;
-		if(event.state.link in pages) {
-			pages[event.state.link]();
-		} else {
-			lurl(event.state.link);
+		if (event.state !== null) {
+			if(event.state.link in pages) {
+				pages[event.state.link]();
+			} else {
+				lurl(event.state.link);
+			}
 		}
 	}, false);
 } );

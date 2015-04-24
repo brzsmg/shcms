@@ -1,16 +1,17 @@
 <?php /*************************************************************************
-*  S.PHP5:                                          © 2013 Selivanovskikh M.G. *
+*    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Data\Provider\Oracle                                               *
-*                                                                              *
-*   Провайдер для базы Oracle.                                                 *
 *******************************************************************************/
 namespace Data\Provider;
 echo 'Файл '._FILE_.'требует коректировки';exit;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
+/**
+ * Провайдер для СУБД Oracle
+ */
 class Oracle extends \Data\Base {
     
     protected $db;

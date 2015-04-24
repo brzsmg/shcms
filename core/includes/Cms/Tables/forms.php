@@ -4,6 +4,7 @@ if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 $tables[] = array(
 	'name'   => 'forms',
 	'struct' => array(
+		'id'          => 'integer',
 		'sid'         => 'varchar',
 		'form'        => 'varchar',
 		'apply'       => 'boolean',
@@ -15,5 +16,6 @@ $tables[] = array(
 		'name'        => 'varchar',
 		'value'       => 'varchar'
 	),
+	'identity' => 'id',
 	'unique' => array('sid', 'form', 'apply')
 );

@@ -1,5 +1,5 @@
 <?php /*************************************************************************
-*    type: SRC.PHP5                                © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Cms\Controllers\Sections                                           * 

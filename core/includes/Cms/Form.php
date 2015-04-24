@@ -95,7 +95,7 @@ class Form extends \System\Object
 		while( ($row = $result->fetchArray() )!==FALSE) {
 			$param['form']['all_failed_access'] = $row[0];
 		}
-		$query = 'SELECT "name", "value", "hash", "check_count" FROM {forms} WHERE sid = :sid and form = :form and apply = :apply';
+		$query = 'SELECT "id", "name", "value", "hash", "check_count" FROM {forms} WHERE sid = :sid and form = :form and apply = :apply';
 		$result = $base->execute($query,
 			array(
 				'sid'   => $sid,
@@ -104,10 +104,11 @@ class Form extends \System\Object
 			)
 		);
 		if($result->numRows() > 0) {
-			while( ($row = $result->fetchArray() )!==FALSE) {
-				$param[$row[0]]['value'] = $row[1];
-				$this->FID = $row[2];
-				$param['form']['checks'] = $row[3];
+			while( ($row = $result->fetchArray(TRUE) )!==FALSE) {
+				$param[$row["name"]]['id'] = $row["id"];
+				$param[$row["name"]]['value'] = $row["value"];
+				$this->FID = $row["hash"];
+				$param["form"]["checks"] = $row["check_count"];
 			}
 			
 			$request = $inRequest->getWebRequest();
@@ -143,10 +144,12 @@ class Form extends \System\Object
 			}
 		} else {
 			$param['form']['correctly'] = NULL;
-			$query = 'INSERT INTO {forms} VALUES (:sid, :form, :apply, :ip, :create_date, :update_date, :hash, :check_count, :name, :value)';
+			$nextval = $base->nextval('forms','id');
+			$query = 'INSERT INTO {forms} VALUES (:id, :sid, :form, :apply, :ip, :create_date, :update_date, :hash, :check_count, :name, :value)';
 			foreach($param as $name => $input) {
 				$base->execute($query,
 					array(
+						'id'          => $nextval,
 						'sid'         => $sid,
 						'form'        => $this->Name,
 						'apply'       => 'N',
@@ -157,8 +160,9 @@ class Form extends \System\Object
 						'check_count' => '0',
 						'name'        => $name,
 						'value'       => $param[$name]['value']
-					)
+					), 'id'
 				);
+				$param[$name]['id'] = $base->getInsertID();
 			}
 		}
 		return $param;

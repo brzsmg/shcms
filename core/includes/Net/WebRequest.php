@@ -1,13 +1,16 @@
 <?php /*************************************************************************
-*  M.PHP5:                                     © 2010-2014 Selivanovskikh M.G. *
+*    type: SRC.PHP5                            © 2010-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
-*    path: \Net\Request                                                        * 
-*                                                                              *
-*   Запрос клиента.                                                            *
+* created: 2010.10.01                                                          *
+*    path: \Net\Request                                                        *
 *******************************************************************************/
 namespace Net;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Запрос клиента
+ */
 class WebRequest extends \System\Object
 {
 //# Параметры #//

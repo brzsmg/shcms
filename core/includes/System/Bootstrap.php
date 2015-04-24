@@ -1,6 +1,7 @@
 <?php /*************************************************************************
-*    type: M.PHP5                              © 2009-2014 Selivanovskikh M.G. *
+*    type: SRC.PHP5                            © 2009-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
+* created: 2009.10.01                                                          *
 *    path: \System\bootstrap                                                   *
 *                                                                              *
 *   Ядро, проверяет PHP, подготавливает среду для скриптов использующих классы *
@@ -13,36 +14,52 @@
 *******************************************************************************/
 error_reporting(E_ALL);  //Любые ошибки иcключены
 /*******************************************************************************
-*   Дерективы                                                                  *
+*   Дерективы и директории                                                     *
+*    ROOT - необходим только для автоопределения ниже описаных каталогов.      *
+*    DATA - настройки, параметры подключения к БД, кеш, семафоры, файлы        *
+* указаные в таблице БД документы.                                             *
+*    CORE - классы, темы, языковые файлы, шрифты.                              *
+*    MODULES - каталоги модулей, каждый модуль может содержать то же самое,    *
+* что и CORE.                                                                  *
 *******************************************************************************/
-if(!defined('ROOT')){
-	exit;
-}
 if (!defined('DS')) {
 	define('DS', DIRECTORY_SEPARATOR);
 }
-if(!defined('CORE')){
+if(!defined('DEBUG')) {
+	define('DEBUG', FALSE);  // Включение/отключение отладки(безопасность)
+}
+
+if(!defined('ROOT')) {
+	exit;
+}
+
+if(!defined('CORE')) {
 	define('CORE',ROOT.DS.'core');
 }
-if(!defined('SEM')){
-	define('SEM',ROOT.DS.'cache'.DS.'sem');
+if(!defined('MODULES')) {
+	define('MODULES',ROOT.DS.'modules');
 }
+if(!defined('DATA')) {
+	define('DATA',getcwd().DS.'data');
+}
+
 if(!defined('SOURCES')){
 	define('SOURCES',CORE.DS.'includes');
 }
-if(!defined('MODULES')){
-	define('MODULES',ROOT.DS.'modules');
+if(!defined('CACHE')) {
+	define('CACHE',DATA.DS.'cache');
 }
-if(!defined('DATA')){
-	define('DATA',getcwd().DS.'data');
+if(!defined('DOCS')) {
+	define('DOCS',DATA.DS.'docs');
 }
-if(!defined('DEBUG')){
-	define('DEBUG', FALSE);  // Включение/отключение отладки(безопасность)
+if(!defined('SEM')) {
+	define('SEM',CACHE.DS.'sem');
 }
+
 /*******************************************************************************
 *   Черный список                                                              *
 *******************************************************************************/
-$file_name=ROOT.DS.'data'.DS.'blacklist.php';
+$file_name=DATA.DS.'blacklist.php';
 if(file_exists($file_name)) {
 	include $file_name;
 	if(array_search(getenv('REMOTE_ADDR'),$data)!==FALSE) {
@@ -90,6 +107,7 @@ unset($file_name);
 		'log'     => ROOT.DS.'log.xls',  // Лог выполнения
 		'data'    => ROOT.DS.'data'
 	),
+	'gettext'               => FALSE,
 	'_'                     => NULL,
 	'autoload'              => array(
 		'PHPExcel' => array('PHPExcel_Autoloader', 'Load')
@@ -256,12 +274,13 @@ function path($path)
  * Функция для GetText
  */
  if(function_exists('_')) {
+	$_['gettext'] = TRUE;
 	putenv('LC_ALL=ru_RU');
 	setlocale(LC_ALL, 'ru_RU.UTF-8');
 	bindtextdomain('core', CORE.DS.'locale');
 	textdomain("core");
 } else {
-	function /*string*/ _(/*string*/ $str='', $n=null)
+	function /*string*/ _(/*string*/ $str='', $n=NULL)
 	{
 		global $_;
 		if($_['_'] != NULL) {
@@ -719,6 +738,7 @@ function bootstrap($exec)
 *   Запускаем приложение                                                       *
 *******************************************************************************/
     ob_start();  // Пишем все в буфер
+    
     if(file_exists($exec)) {
         //Глобальный блок try
         //Возможно этот блок отловит не все исключения
@@ -730,6 +750,10 @@ function bootstrap($exec)
         }
     } else {
         header('HTTP/1.0 404 Not Found');
+        echo '<h>INTERNAL SERVER ERROR</h>';
+        if(DEBUG == TRUE) {
+			echo $exec.'<br/><br/><div>No fount main file.</div>';
+        }
 		exit;
     }
     if($_['echo']) {

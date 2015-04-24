@@ -1,6 +1,7 @@
 <?php /*************************************************************************
 *    type: SRC.PHP5                            © 2009-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
+* created: 2013.02.01                                                          *
 *    path: \Data\Node                                                          * 
 *                                                                              *
 *   Node. Автоматизирует иерархические объекты. Поля из базы именуются с нижним*
@@ -14,6 +15,9 @@ namespace Data;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
+/*
+ * Узел в иерархии объектов базы данных.
+ */
 abstract class Node extends \System\Object{
 //# Свойства #//
 	protected /*Node[]*/ $items     = FALSE;

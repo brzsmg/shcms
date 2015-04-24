@@ -1,15 +1,16 @@
 <?php /*************************************************************************
-*    type: SRC.PHP5                                © M.G. Selivanovskikh, 2013 *
+*    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2013.02.01                                                          *
 *    path: \Data\Config                                                        * 
-*                                                                              *
-*   Конфигурация из фалйа.                                                     *
 *******************************************************************************/
 namespace Data;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
 
+/**
+ * Конфигурация из файла
+ */
 class Config extends \System\MemoryObject
 {
     protected $_data;

@@ -1,13 +1,16 @@
 <?php /*************************************************************************
-*  M.PHP5:                                     © 2013-2014 Selivanovskikh M.G. *
+*    type: SRC.PHP5                            © 2013-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
+* created: 2013.02.01                                                          *
 *    path: \main.php                                                           *
-*                                                                              *
-*   Web-приложение CMS сервер.                                                 *
 *******************************************************************************/
 /*global namespase;*/
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Web-приложение CMS сервер
+ */
 class MainApp extends \System\Object
 {
     protected $Server;

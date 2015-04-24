@@ -1,14 +1,16 @@
-<?php /************************************************************************
-*  M.PHP5:                                     © 2010-2014 Selivanovskikh M.G. *
+<?php /*************************************************************************
+*    type: SRC.PHP5                            © 2010-2014 Selivanovskikh M.G. *
 * charset: UTF-8                                                               *
 * created: 2010.02.01                                                          *
 *    path: \Net\WebClient                                                      * 
-*                                                                              *
-*   Клиент HTTP.                                                               *
 *******************************************************************************/
 namespace Net;
-if(!defined('SOURCES')){Header("Location: http://".getenv('HTTP_HOST'));exit;}
+if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
+
+/**
+ * Клиент HTTP.
+ */
 class WebClient extends \System\Dispatch{
 	protected /*Bool*/    $Server;
 	protected /*Bool*/    $Connected;   // Подключен ли пользователь
