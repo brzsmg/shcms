@@ -1,9 +1,10 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2013-2014 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: index.php                                                           *
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
 define('ROOT', getcwd());
 define('DEBUG', True);
 define('CORE', ROOT.DIRECTORY_SEPARATOR.'core');
