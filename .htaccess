@@ -1,34 +1,28 @@
-################################################################################
-#    type: CFG.HTTPD                           © 2011-2015 Selivanovskikh M.G. #
-# charset: UTF-8                                                               #
-# created: 2011.01.01                                                          #
-#    path: .htaccess                                                           #
-################################################################################
-<Files ".*">
-  Order Allow,Deny
-  Deny from All
-</Files>
+# SHCMS
+#
+# Конфигурация Apache
+#
+# @copyright 2013-2017 Selivanovskikh M.G.
+# @license   GNU General Public License v2.0
 
-###FileSystems
+#FileSystems
 Options -Indexes
 DirectoryIndex index.php
 AddDefaultCharset Off
-#ErrorDocument 400 "error400
 
-###Rewrite
-RewriteEngine On
-RewriteBase /
+#Rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
 
-rewriteCond %{REQUEST_URI} !^/favicon.ico
-rewriteCond %{REQUEST_URI} !^/trex/
-rewriteCond %{REQUEST_URI} !^/dev/
-rewriteCond %{REQUEST_URI} !^/core/theme/
-rewriteCond %{REQUEST_URI} !^/modules/
-rewriteCond %{REQUEST_URI} !^/phpPgAdmin/
-rewriteCond %{REQUEST_URI} !^/index.php
-rewriteCond %{REQUEST_URI} !^/cache/img
-rewriteCond %{REQUEST_URI} !^/files
-RewriteRule ^(.*)(/?(.*))+$ /index.php [L,QSA]
+    rewriteCond %{REQUEST_URI} !^/favicon.ico
+    rewriteCond %{REQUEST_URI} !^/index.php
+    rewriteCond %{REQUEST_URI} !^/core/theme/
+    rewriteCond %{REQUEST_URI} !^/modules/
+    rewriteCond %{REQUEST_URI} !^/cache/img
+    rewriteCond %{REQUEST_URI} !^/files
+    RewriteRule ^(.*)(/?(.*))+$ /index.php [L,QSA]
+</IfModule>
 
 #Для получения POST raw data от multipart/form-data
 <IfModule mod_setenvif>
