@@ -1,15 +1,15 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2013-2014 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \main.php                                                           *
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 /*global namespase;*/
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
-
 /**
- * Web-приложение CMS сервер
+ * Web-приложение CMS сервер.
  */
 class MainApp extends \System\Object
 {
