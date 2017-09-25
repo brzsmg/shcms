@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                                © M.G. Selivanovskikh, 2013 *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\System                                                         *
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Content Managment System
@@ -22,6 +23,7 @@ class System extends \System\Dispatch
 	protected $Install = NULL;
 	public $Module = array();
 	public $Controllers = array();
+	public $sem = array('base'=>1,'registration'=>2);//Идентификаторы семафоров
 	//public $Service = array();   //Службы создаваемые модулями
 	
 	protected function construct($inServer = NULL)
@@ -36,7 +38,7 @@ class System extends \System\Dispatch
 		$this->Text = new \System\Text($this->Config['core']);
 		$this->AddEvent('EvtRequest');
 		$this->Server->Listen('EvtRequest',array($this,'onRequest'));
-		$sem = \sem_get('base');
+		$sem = \sem_get($this->sem['base']);
 		\sem_acquire($sem);
 		if(file_exists(DATA.DS.'access.cfg.php')) {
 			$this->openBase();
@@ -122,14 +124,7 @@ class System extends \System\Dispatch
 			return FALSE;
 		}
 		while (($entry = readdir($handle)) !== FALSE) {
-			if(
-				(!is_dir(MODULES.DS.$entry))
-				or ($entry == '.')
-				or ($entry == '..')
-				or (substr($entry,0,1) == '_')
-			)
-			{
-				
+			if((!is_dir(MODULES.DS.$entry))or($entry == '.')or($entry == '..')) {
 				continue;
 			}
 			$this->Module[$entry] = array();
@@ -152,7 +147,21 @@ class System extends \System\Dispatch
 	{
 		return $this->Module;
 	}
-	
+	public function getSQL($module,$name)
+	{
+		$file = null;
+		if($module != 'core'){
+			$file = MODULES.DS.$module.DS.'sql'.DS.$name.'.sql';
+		}else{
+			throw new \System\ECore('TODO: Не доработано!');
+		}
+		if(file_exists($file )){
+			return file_get_contents($file);
+		}else{
+			throw new \System\ECore('Файл с SQL запросом "'.$file.'" не найден.');
+		}
+		
+	}
     public function getController($inRequest)
 	{
 		$path = '';

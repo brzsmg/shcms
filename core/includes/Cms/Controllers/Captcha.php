@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*  S.PHP5:                                          © 2006-2011 Kruglov Sergei *
-* charset: UTF-8                                                               *
-*    path: \Cms\Controllers\Captcha.php                                        *
-*  source: www.captcha.ru, www.kruglov.ru                                      *
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms\Controllers;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Контроллер для капчи по адресу "http://{host}/captcha".

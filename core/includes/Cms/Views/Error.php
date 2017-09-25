@@ -1,15 +1,17 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            Â© 2013-2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\Views\Registration                                             * 
-*                                                                              *
-*   ÐŸÑ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð´Ð»Ñ Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¾ Ð¾ÑˆÐ¸Ð±ÐºÐµ.                                      *
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms\Views;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
+/**
+ * Ïðåäñòàâëåíèå äëÿ Îøèáêè.
+ */
 class Error extends \Cms\View
 {
 	public function construct($inRequest = NULL, $inSection = NULL)

@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\Controllers\Sections                                           * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms\Controllers;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Контроллер для разделов.

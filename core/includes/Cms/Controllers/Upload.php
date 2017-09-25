@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                                 © 2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2015.02.01                                                          *
-*    path: \Cms\Controllers\Upload                                             * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms\Controllers;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Контроллер приема файлов формы
@@ -32,13 +33,15 @@ class Upload extends \Cms\Controller
 //# Методы #//
 	public function executeRequest($inRequest)
 	{
+		
 		try {
 			$Base = $inRequest->getSystem()->getBase();
-			$form = $inRequest->getWebRequest()->getParam('form');
-			$ads = $inRequest->getWebRequest()->getParam('ads');
+			//$form = $inRequest->getWebRequest()->getParam('form');
+			//$ads = $inRequest->getWebRequest()->getParam('ads');
+			$id = $inRequest->getWebRequest()->getParam('id');
 			$result = NULL;
-			if($form !== NULL) {
-				$query = 'SELECT "id" FROM {forms} WHERE hash = :hash and name = :name';
+			if($id!==null){//$form !== NULL) {
+				/*$query = 'SELECT "id" FROM {forms} WHERE hash = :hash and name = :name';
 				$result = $Base->execute($query,array(
 					'hash' => $form,
 					'name' => 'docs'
@@ -46,11 +49,11 @@ class Upload extends \Cms\Controller
 				$input = $result->fetchArray(TRUE);
 				if($input == FALSE) {
 					throw new \System\ECore('Такой формы не существует.');
-				}
+				}*/
 				$query = 'SELECT COUNT(*) FROM {docs} WHERE parent_table = :parent_table and parent_id = :parent_id';
 				$result = $Base->execute($query, array(
-					'parent_table' => 'ads',
-					'parent_id'    => $input['id']
+					'parent_table' => 'md_organizations',
+					'parent_id'    => $id//$input['id']
 				));
 				$docs_count = $result->fetchValue();
 				$file = $this->save();
@@ -60,8 +63,8 @@ class Upload extends \Cms\Controller
 				$query .= ') VALUES (:id, :parent_table, :parent_id, :position, :name, :description, :type, :mime, :size, :path, :data)';
 				$result = $Base->execute($query, array(
 					'id'           => $nextval,
-					'parent_table' => 'forms',
-					'parent_id'    => $input['id'],
+					'parent_table' => 'md_organizations',//'forms',
+					'parent_id'    => $id,//$input['id'],
 					'position'     => ($docs_count+1),
 					'name'         => $file["name"],
 					'description'  => '',
@@ -72,9 +75,11 @@ class Upload extends \Cms\Controller
 					'data'         => NULL,
 				));
 				$id = $Base->getInsertID();
+				
 				$result = array(
 					'state' => 'success',
-					'id'    => $id
+					'id'    => $id,
+					'path'  => $file["path"]
 				);
 			} else {
 

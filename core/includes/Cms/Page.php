@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\Page                                                           * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+ 
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Формируемая для пользователя страница.
@@ -57,7 +58,7 @@ class Page extends \Net\Response
 		
 		$this->Theme = $inTheme;
                 
-		$this->cachedir = CACHE.DS.'templates';//TODO: из конфига
+		$this->cachedir = ROOT.DS.'cache'.DS.'templates';//TODO: из конфига
 		
 		$this->assign('config', $this->Request->getSystem()->getConfig());
 		$this->assign('statistic', new \Cms\Statistic($this->Request));

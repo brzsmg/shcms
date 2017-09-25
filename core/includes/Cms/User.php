@@ -1,17 +1,18 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2013-2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\User                                                           * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Пользователь системы
  */
-class User extends \System\Dispatch //\Cms\Item
+class User extends \System\Dispatch
 {
 	protected $System = NULL; //HIDE
 	protected $Base = NULL; //HIDE
@@ -38,7 +39,7 @@ class User extends \System\Dispatch //\Cms\Item
 			$query ='SELECT "create_date","update_date" FROM {users} WHERE "id" = :id';
 			$result = $this->Base->execute( $query, array('id'=>$this->_id) );
 			if($result->numRows()<1) {
-				throw new \System\ECore('Такого пользователя не существует.');
+				throw new \System\ECore('Пользователя с ID "'.$inUID.'" не существует.');
 			} else {
 				$row = $result->fetchArray();
 				$this->CreateDate = $row[0];

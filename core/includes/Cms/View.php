@@ -1,16 +1,17 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\View                                                           * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+ 
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Представление для страницы или Ajax запроса.
- * Оно возвращает Данные, Заголовки.
+ * Оно возвращает Данные, Заголовки, не передавая их сразу клиенту
  * Имя шаблона как имя класса.
  */
 class View extends \System\Dispatch
@@ -22,6 +23,13 @@ class View extends \System\Dispatch
 	protected $Data = array();
 	//protected static $Views = array();
 	
+	/**
+	 * Конструктор
+	 *
+	 * @inRequest Запрос
+	 * @name Имя вьюхи
+	 * @data Параметры для вьюхи
+	 */
 	public static function create($inRequest, $name, $data)
 	{
 		$view_class = '\\Cms\\Views\\'.$name;

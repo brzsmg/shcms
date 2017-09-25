@@ -1,12 +1,14 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2009-2014 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2009.02.01                                                          *
-*    path: \Data\Node                                                          * 
-*******************************************************************************/
+<?php
+
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+ 
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Узел иерархии привязаный к объекту БД.

@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                                 © 2015 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2015.02.01                                                          *
-*    path: \Cms\Thumb                                                          * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Представление для документа

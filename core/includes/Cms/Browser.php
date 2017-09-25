@@ -1,12 +1,13 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                                 © 2013 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2013.02.01                                                          *
-*    path: \Cms\Browser                                                       * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
-/******************************************************************************/
 
 /**
  * Браузер клиента
@@ -30,8 +31,9 @@ class Browser extends \System\Object
 	
 	private function init()
 	{
-		if($this->Data === NULL) {
-			$this->Browscap = new \Net\Browscap(CACHE);
+		if($this->Data === NULL)
+		{
+			$this->Browscap = new \Net\Browscap('cache');
 			$this->Browscap->localFile = 'data/full_php_browscap.ini';
 			$this->Data = $this->Browscap->getBrowser($this->Agent);
 		}

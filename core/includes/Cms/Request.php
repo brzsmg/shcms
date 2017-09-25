@@ -1,9 +1,11 @@
-<?php /*************************************************************************
-*    type: SRC.PHP5                            © 2010-2014 Selivanovskikh M.G. *
-* charset: UTF-8                                                               *
-* created: 2010.02.01                                                          *
-*    path: \Cms\Request                                                        * 
-*******************************************************************************/
+<?php
+/**
+ * SHCMS
+ *
+ * @copyright 2013-2017 Selivanovskikh M.G.
+ * @license   GNU General Public License v2.0
+ */
+ 
 namespace Cms;
 if(!defined('SOURCES')){header("Location: http://".getenv('HTTP_HOST'));exit;}
 /******************************************************************************/
@@ -33,6 +35,7 @@ class Request extends \System\Object
 		$this->WebServer = $this->WebRequest->getServer();
 		$this->WebClient = $this->WebRequest->getClient();
 		$this->Session   = new \Net\Session($this->System, $this->WebRequest);
+		//var_dump($this->Session->getSID());exit;
 		$this->User      = new \Cms\User($inSystem,$this->Session->getUID());
 	}
 	

@@ -3,7 +3,7 @@ psr-1 = http://www.php-fig.org/psr/psr-1/ru/
 psr-1_status = "Не все методы преименованы"
 psr-2 = http://www.php-fig.org/psr/psr-2/
 psr-2 = https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
-psr-2_status = "Не все управляющие структуры правильно разщмещены"
+psr-2_status = "Не все управляющие структуры правильно размещены"
 
 [Глобальные константы]
 ROOT - корневое расположение сайта
@@ -12,6 +12,7 @@ SOURCES - Каталог со скриптами
 DEBUG - Режим отладки
 MAIN - Файл с программой
 
+[TODO]
 Создать консоль, все что записано в лог можно посмотреть в режиме отладки.
 
 [Хронология]
@@ -22,9 +23,7 @@ MAIN - Файл с программой
 Проверили созданы ли таблицы.
 Проверили сессию, если ее нет, создаем.
 
-
-
-[objects]
+[Objects]
 System
 Module
 Template
